@@ -1,24 +1,11 @@
-<div class="container">
-
-    <h2>official-artwork</h2>
-
-
-
-    <div class="card">
-
-
-        <div *ngIf="items">
-            <ul class="title" *ngFor="let item of items">
-                <div> <img src="{{imageUrl(item.url)}}" alt="{{item.name}}" class="card-image"></div>
-                <div class="title-name">{{item.name}}</div>
-
+<div class="container-section">
+    <section class="card">
+        <ng-container *ngIf="items">
+            <ul class="card-container" *ngFor="let item of items | filter:searchKey">
+                <li> <img src="{{imageUrl(item.url)}}" alt="{{item.name}}" class="card-image"></li>
+                <li class="title-name">{{item.name}}</li>
             </ul>
-        </div>
-        <span>
-
-        </span>
-
-
-    </div>
-
+        </ng-container>
+    </section>
 </div>
+<div *ngIf="isLoading">Loading...</div>

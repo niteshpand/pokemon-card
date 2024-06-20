@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ArtWorkService } from './art-work.service';
 
 @Component({
@@ -8,24 +8,32 @@ import { ArtWorkService } from './art-work.service';
 })
 export class ArtWorkComponent {
   items: any = [];
+  currentPage = 1;
+  pageSize = 20;
+  totalItems = 0;
   isLoading = false;
+  searchKey: string = '';
 
   constructor(private artWorkService: ArtWorkService) {}
 
-  toggleLoading = () => (this.isLoading = !this.isLoading);
-
-  loadData = () => {
-    this.toggleLoading;
-    this.artWorkService.artWork();
-  };
-
   ngOnInit() {
-    this.artWorkService.artWork().subscribe((res: any) => {
-      res.results.map((res: any) => {
-        this.items.push(res);
-        console.log(this.items);
-      });
+    this.fetchData();
+    this.artWorkService.search.subscribe((val: any) => {
+      this.searchKey = val;
+      console.log(this.searchKey);
     });
+  }
+
+  fetchData() {
+    if (!this.isLoading) {
+      this.isLoading = true;
+      this.artWorkService
+        .artWork(this.currentPage, this.pageSize)
+        .subscribe((res) => {
+          this.items.push(...res.results);
+          this.isLoading = false;
+        });
+    }
   }
 
   imageUrl(pokemonUrl: string): string {
@@ -35,5 +43,17 @@ export class ArtWorkComponent {
 
   private getPokemonId(pokemonUrl: string): string {
     return pokemonUrl.split('/').slice(-2, -1)[0];
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    const pos =
+      document.documentElement.scrollTop +
+      document.documentElement.offsetHeight;
+    const max = document.documentElement.scrollHeight;
+    if (pos >= max && !this.isLoading) {
+      this.currentPage++;
+      this.fetchData();
+    }
   }
 }

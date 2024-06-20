@@ -1,25 +1,13 @@
-.card-title {
-  font-size: 5rem;
-  margin-top: 10px;
+.container-section {
+  padding-top: 6rem;
+  margin-left: 5%;
 }
-
-/* .card-description {
-  font-size: 2rem;
-  color: #555;
-} */
-
 .card {
-  width: 200px;
-  overflow-x: none;
-}
-
-.card div {
-  width: 100%;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-gap: 25px;
-  padding: 10px;
-  flex: none;
+  grid-gap: 18px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .card img {
@@ -34,15 +22,18 @@
   display: none;
 }
 
-.title {
-  width: 190px;
+.card-container {
+  width: 200px;
   text-align: center;
   list-style: none;
-  border: 2px solid black;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: bisque;
 }
 
 .title-name {
   font-size: 1.5rem;
   margin-top: 2px;
+  padding-bottom: 15px;
+  color: #767373;
 }

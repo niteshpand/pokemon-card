@@ -2,10 +2,4 @@
 body {
   font-family: sans-serif;
   background: #fbf8f8;
-  box-sizing: border-box;
-}
-
-.container {
-  margin-left: 10%;
-  margin-right: 5%;
 }
