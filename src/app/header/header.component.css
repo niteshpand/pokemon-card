@@ -2,4 +2,18 @@
   width: 100%;
   position: fixed;
   z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.container-box input {
+  font-size: 1.2rem;
+  text-shadow: 0 0 4px #2d2e2e;
+  width: 30rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.container-box .navbar-brand {
+  text-shadow: 0 0 4px #2d2e2e;
+}
+.container-box input:hover {
+  font-size: 1.2rem;
+  text-shadow: 0 0 4px #2d2e2e;
 }

@@ -47,13 +47,13 @@ export class ArtWorkComponent {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
-    // const pos =
-    //   document.documentElement.scrollTop +
-    //   document.documentElement.offsetHeight;
-    // const max = document.documentElement.scrollHeight;
-    // if (pos >= max && !this.isLoading) {
-    //   this.currentPage++;
-    //   this.fetchData();
-    // }
+    const pos =
+      document.documentElement.scrollTop +
+      document.documentElement.offsetHeight;
+    const max = document.documentElement.scrollHeight;
+    if (pos >= max && !this.isLoading) {
+      this.currentPage++;
+      this.fetchData();
+    }
   }
 }
