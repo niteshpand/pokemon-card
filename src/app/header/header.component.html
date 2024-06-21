@@ -4,8 +4,7 @@
             <a class="navbar-brand">Pokemon Cards</a>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                    (keyup)="search($event)" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone:true}">
-                <button class="btn btn-outline-success" type="submit" id="search">Search</button>
+                    (keyup)="search($event)" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone:true}" id="search">
             </form>
         </div>
     </nav>

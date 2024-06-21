@@ -9,6 +9,7 @@ import { ArtWorkService } from '../art-work/art-work.service';
 export class HeaderComponent {
   searchTerm: string = '';
   constructor(private artService: ArtWorkService) {}
+
   search(event: any) {
     this.searchTerm = (event.target as HTMLInputElement).value;
     this.artService.search.next(this.searchTerm);

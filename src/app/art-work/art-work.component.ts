@@ -17,11 +17,11 @@ export class ArtWorkComponent {
   constructor(private artWorkService: ArtWorkService) {}
 
   ngOnInit() {
-    this.fetchData();
     this.artWorkService.search.subscribe((val: any) => {
       this.searchKey = val;
-      console.log(this.searchKey);
     });
+
+    this.fetchData();
   }
 
   fetchData() {
@@ -41,19 +41,19 @@ export class ArtWorkComponent {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
   }
 
-  private getPokemonId(pokemonUrl: string): string {
+  getPokemonId(pokemonUrl: string): string {
     return pokemonUrl.split('/').slice(-2, -1)[0];
   }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
-    const pos =
-      document.documentElement.scrollTop +
-      document.documentElement.offsetHeight;
-    const max = document.documentElement.scrollHeight;
-    if (pos >= max && !this.isLoading) {
-      this.currentPage++;
-      this.fetchData();
-    }
+    // const pos =
+    //   document.documentElement.scrollTop +
+    //   document.documentElement.offsetHeight;
+    // const max = document.documentElement.scrollHeight;
+    // if (pos >= max && !this.isLoading) {
+    //   this.currentPage++;
+    //   this.fetchData();
+    // }
   }
 }
